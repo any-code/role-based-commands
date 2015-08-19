@@ -48,7 +48,7 @@ var ctrl = new Controller(user, roles);
 ``` javascript
 // A command can be assigned to a local variable
 // command = ctrl.command(...);
-ctrl.command('command.name',['user.admin'], function(some, arguments) {
+ctrl.command('command.name', ['user.admin'], function(some, arguments) {
   // execute some command
   console.log("do %s $s", some, arguments);
 });
