@@ -1,0 +1,37 @@
+{
+  "name": "role-based-commands",
+  "version": "1.0.0",
+  "description": "Javascript role-based command abstraction",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nodeunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/any-code/role-based-commands.git"
+  },
+  "keywords": [
+    "role",
+    "based",
+    "command",
+    "commands",
+    "rbac",
+    "role-based"
+  ],
+  "author": "Lee Tagg <lee@anycode.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/any-code/role-based-commands/issues"
+  },
+  "homepage": "https://github.com/any-code/role-based-commands#readme",
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
+  },
+  "dependencies": {
+    "javascript-collection-paraphernalia": "^1.0.1",
+    "javascript-object-paraphernalia": "^1.0.1"
+  }
+}
