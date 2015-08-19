@@ -19,43 +19,53 @@ npm install role-based-commands
 
 ### 2. Examples
 
+#### Require role-based-commands and configure
+
 ``` javascript
 var Controller = require('role-based-commands'),
     roles = {
             root: ['root'],
             admin: ['user.admin'],
             user: ['user.permission.one', 'user.permission.two']
-        },
-     user;
+        };
 
 user = {
     id: 42,
     name: "Foo Bar",
     roles: ['user']
 }
+```
 
-// Create a controller and add a command that is executable only to a user with the correct permissions
+#### Create a controller
 
-var ctrl = new Controller(user, roles),
-    command = ctrl.command('command.name',['user.admin'], function(some, arguments) {
-      // execute some command
-      console.log("do %s $s", some, arguments);
-    });
+``` javascript
+// Provide the controller with an object containing the user state and the role/permissions
+var ctrl = new Controller(user, roles);
+```
 
-// Calling the command 
+#### Create a command
 
-// using the assigned variable
+``` javascript
+// A command can be assigned to a local variable
+// command = ctrl.command(...);
+ctrl.command('command.name',['user.admin'], function(some, arguments) {
+  // execute some command
+  console.log("do %s $s", some, arguments);
+});
+```
+
+#### Calling the command
+
+``` javascript
+// the user cannot execute the command without the correct role
+// eg. :-
+// user.roles = ['user'];
+// user.roles = ['admin'];
+
+// The command can be called like a regular function using the variable assignment 
 command(argument1, argument2);
 
-// using the controller's execute method
-ctrl.execute('command.name', argument1, argument2);
-
-// the user can't execute the command 
-user.roles = ['user'];
-ctrl.execute('command.name', argument1, argument2);
-
-// the user can execute the command 
-user.roles = ['admin'];
+// - or using the controller's execute method
 ctrl.execute('command.name', argument1, argument2);
 ```
 
